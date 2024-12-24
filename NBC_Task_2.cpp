@@ -2,7 +2,6 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
-#include <random>
 
 using namespace std;
 
@@ -20,19 +19,19 @@ protected:
 class Dog : public Animal{
 public:
     Dog(string word) { this->m_word = word; }
-    void makeSound() { cout << this->m_word << endl; }
+    void makeSound() { cout << "강아지 " << this->m_word << endl; }
 };
 
 class Cat : public Animal{
 public:
     Cat(string word) { this->m_word = word; }
-    void makeSound() { cout << this->m_word << endl; }
+    void makeSound() { cout << "고양이 " << this->m_word << endl; }
 };
 
 class Cow : public Animal{
 public:
     Cow(string word) { this->m_word = word; }
-    void makeSound() { cout << this->m_word << endl; }
+    void makeSound() { cout << "송아지 " << this->m_word << endl; }
 };
 
 Animal* createRandomAnimal(){
@@ -41,11 +40,11 @@ Animal* createRandomAnimal(){
     int num = rand() % 3;
 
     if(num == 0)
-        ani = new Dog("멍멍");
+        ani = new Dog("멍멍!");
     else if(num == 1)
-        ani = new Cat("냥냥");
+        ani = new Cat("냥냥!");
     else
-        ani = new Cow("음머");
+        ani = new Cow("음매!");
 
     return ani;
 }
@@ -76,7 +75,8 @@ void Zoo::addAnimal(Animal* animal){
 
 void Zoo::performActions(){
     for(int i = 0; i < 10; i++){
-        animals[i]->makeSound();
+        if(animals[i] != nullptr)
+            animals[i]->makeSound();
     }
 }
 
