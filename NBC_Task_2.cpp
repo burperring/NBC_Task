@@ -92,7 +92,7 @@ int main(){
 
     zoo->performActions();
 
-    delete zoo;                         // 소멸자 실행행
+    delete zoo;                         // 소멸자 실행
     zoo = nullptr;
 
     return 0;

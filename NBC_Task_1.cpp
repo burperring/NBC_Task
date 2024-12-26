@@ -5,7 +5,7 @@ using namespace std;
 int N;
 int *arr;
 
-void Input(){
+void Input(){ // 입력 받아오기
     cin >> N;
     arr = new int[N];
 
@@ -17,7 +17,7 @@ void Input(){
 void sumAvg(int N, int *arr){
     float sum = 0;
 
-    for(int i = 0; i < N; i++){
+    for(int i = 0; i < N; i++){ // 전체 합 구하기
         sum += arr[i];
     }
 
