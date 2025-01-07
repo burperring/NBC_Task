@@ -65,11 +65,11 @@ protected:
     unordered_map<string, int> stock;
 
 public:
-    void initializeStock(Book book, int quantity){
+    void initializeStock(Book book, int quantity = 3){
         stock.insert({book.title, quantity});
     }
 
-    void borrowBook(Book& book){
+    void borrowBook(const Book& book){
         if(stock[book.title] > 0)
             stock[book.title]--;
 
@@ -85,7 +85,7 @@ public:
         cout << title << "의 재고: " << stock[title] << endl;
     }
 
-    int bookStock(Book& book){
+    int bookStock(const Book& book){
         return stock[book.title];
     }
 
