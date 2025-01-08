@@ -70,10 +70,8 @@ void ARandomMove::Move()
 
 	int32 RandomValueX = FMath::RandRange(-1, 1);
 	int32 RandomValueY = FMath::RandRange(-1, 1);
-	int32 RandomEvent = FMath::RandRange(0, 1);
-
-	if (RandomEvent)
-		eventCnt++;
+	
+    createEvent();
 
 	FVector NewPoint(Start.X + RandomValueX * 10, Start.Y + RandomValueY * 10, Start.Z);
 	
@@ -85,5 +83,13 @@ void ARandomMove::Move()
 	CurrentDistance = 0.0f;
 
 	MoveEvent = true;
+}
+
+void ARandomMove::createEvent()
+{
+    int32 RandomEvent = FMath::RandRange(0, 1);
+
+    if (RandomEvent)
+		eventCnt++;
 }
 
