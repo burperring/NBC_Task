@@ -49,6 +49,7 @@ void ARandomMove::Tick(float DeltaTime)
 			MoveEvent = false;
 			
 			if (MoveCnt == 10) {
+				UE_LOG(LogTemp, Warning, TEXT("CurrentVector = %s"), *GetActorLocation().ToString());
 				UE_LOG(LogTemp, Warning, TEXT("TotalDistance = %f"), TotalDistance);
 				UE_LOG(LogTemp, Warning, TEXT("EventCount = %d"), eventCnt);
 
@@ -70,10 +71,9 @@ void ARandomMove::Move()
 
 	int32 RandomValueX = FMath::RandRange(-1, 1);
 	int32 RandomValueY = FMath::RandRange(-1, 1);
-	
-    createEvent();
-
 	FVector NewPoint(Start.X + RandomValueX * 10, Start.Y + RandomValueY * 10, Start.Z);
+	
+	createEvent();
 	
 	Direction = NewPoint - Start;
 	MoveDistance = Direction.Size();
@@ -87,9 +87,9 @@ void ARandomMove::Move()
 
 void ARandomMove::createEvent()
 {
-    int32 RandomEvent = FMath::RandRange(0, 1);
+	int32 RandomEvent = FMath::RandRange(0, 1);
 
-    if (RandomEvent)
+	if (RandomEvent)
 		eventCnt++;
 }
 
