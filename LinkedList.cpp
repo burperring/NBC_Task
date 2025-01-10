@@ -31,6 +31,7 @@ public:
     // ...
 
     void append(string value);
+    void addNode(int index, string value);
     Node* getNode(int index);
 };
 
@@ -48,6 +49,29 @@ void LinkedList::append(string value) {
 		this->nodeCount++;
 }
 
+void LinkedList::addNode(int index, string value){
+    if(index < 0 || index > nodeCount){
+        throw out_of_range("유효하지 않은 인덱스입니다.");
+    }
+
+    Node* newNode = new Node(value);
+
+    if(index == 0){
+        newNode->next = this->head;
+        this->head = newNode;
+        this->nodeCount++;
+        return;
+    }
+
+    Node* node = this->getNode(index - 1);
+    Node* nextNode = node->next;
+    node->next = newNode;
+    newNode->next = nextNode;
+    this->nodeCount++;
+
+    return;
+}
+
 Node* LinkedList::getNode(int index){
     if(index < 0 || index >= nodeCount){
         throw out_of_range("유효하지 않은 인덱스입니다.");
@@ -57,7 +81,7 @@ Node* LinkedList::getNode(int index){
     for(int i = 0; i < index; i++){
         node = node->next;
     }
-    
+
     return node;
 }
 
